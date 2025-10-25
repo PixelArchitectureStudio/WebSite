@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PIXEL — Architecture Group · About</title>
+  <meta name="description" content="Meet the PIXEL Architecture Group team and learn about our process." />
+  <style>
+    :root{
+      --bg:#111111;
+      --fg:#e8e8e8;
+      --muted:#aaaaaa;
+      --brand:#bfbfbf;
+      --card:#1a1a1a;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      height:100%;margin:0;overflow-x:hidden;background:radial-gradient(1200px 700px at 20% 30%,rgba(200,200,200,0.18) 0%,transparent 65%),radial-gradient(800px 500px at 80% 70%,rgba(150,150,150,0.16) 0%,transparent 70%),var(--bg);
+      color:var(--fg);
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    }
+    a{color:inherit;text-decoration:none}
+    header{position:sticky;top:0;padding:24px 5vw 16px;display:flex;justify-content:space-between;align-items:center;background:rgba(17,17,17,.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.06);z-index:10}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.14em}
+    .logo-badge{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#888,#bbb 60%);box-shadow:0 6px 24px rgba(255,255,255,.15),inset 0 1px 0 rgba(255,255,255,.2)}
+    nav{display:flex;gap:14px;font-size:15px}
+    nav a{padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.08);background:rgba(26,26,26,0.85);color:var(--muted);transition:.25s ease}
+    nav a:hover,nav a:focus{color:var(--fg);border-color:rgba(255,255,255,0.18);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+    main{padding:100px 5vw 120px;max-width:1100px;margin:0 auto;display:grid;gap:64px}
+    h1{margin:0;font-size:clamp(40px,6vw,84px);line-height:1.05}
+    p.lead{color:var(--muted);max-width:62ch;font-size:18px;margin:20px 0 0}
+    section{display:grid;gap:24px}
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
+    .member{border-radius:22px;border:1px solid rgba(255,255,255,0.08);background:linear-gradient(180deg,#1f1f1f,#151515);box-shadow:0 14px 36px rgba(0,0,0,.35);padding:24px;display:grid;gap:18px;align-content:start}
+    .avatar{width:96px;height:96px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);box-shadow:0 10px 24px rgba(0,0,0,.4)}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .member h2{margin:0;font-size:22px}
+    .member span{display:block;color:var(--muted);font-size:14px;text-transform:uppercase;letter-spacing:.14em}
+    .member p{margin:0;color:var(--muted);font-size:15px}
+    .values{display:grid;gap:22px}
+    .values h2{margin:0;font-size:28px}
+    .values p{margin:0;color:var(--muted)}
+    @media (max-width:600px){
+      header{flex-direction:column;gap:16px;align-items:flex-start}
+      nav{width:100%;flex-wrap:wrap}
+      nav a{flex:1;text-align:center}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><span class="logo-badge" aria-hidden="true"></span><span>PIXEL</span></div>
+    <nav>
+      <a href="index.html" rel="prev">Home</a>
+      <a href="#team">Team</a>
+      <a href="#values">Values</a>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="about-heading">
+      <div>
+        <h1 id="about-heading">Designing architecture for mindful living.</h1>
+        <p class="lead">PIXEL is a multidisciplinary studio focused on minimal, high-impact environments. We combine architectural rigor with human-centered strategy to deliver spaces that are precise, calming, and beautifully functional.</p>
+      </div>
+    </section>
+
+    <section id="team" aria-labelledby="team-heading">
+      <div>
+        <h2 id="team-heading" style="font-size:36px;margin:0">Meet the team</h2>
+        <p class="lead" style="font-size:16px;margin-top:12px">Every project is guided by a core group of architects, researchers, and storytellers who build the PIXEL experience.</p>
+      </div>
+      <div class="team-grid">
+        <article class="member">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=facearea&w=320&h=320&q=80" alt="Portrait of Amirali Rahimi" loading="lazy" /></div>
+          <div>
+            <h2>Amirali Rahimi</h2>
+            <span>Creative Director</span>
+          </div>
+          <p>Leads vision and design language, ensuring every space embraces clarity and calm while honoring context.</p>
+        </article>
+        <article class="member">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=facearea&w=320&h=320&q=80" alt="Portrait of Mohammad Azari" loading="lazy" /></div>
+          <div>
+            <h2>Mohammad Azari</h2>
+            <span>Lead Architect</span>
+          </div>
+          <p>Translates client goals into architectural systems, orchestrating technical delivery from concept to construction.</p>
+        </article>
+        <article class="member">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?auto=format&fit=facearea&w=320&h=320&q=80" alt="Portrait of Arian Khorsandi" loading="lazy" /></div>
+          <div>
+            <h2>Arian Khorsandi</h2>
+            <span>Structural Specialist</span>
+          </div>
+          <p>Designs resilient structural frameworks that make minimal forms possible without compromising safety.</p>
+        </article>
+        <article class="member">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=facearea&w=320&h=320&q=80" alt="Portrait of Erisa Nazari" loading="lazy" /></div>
+          <div>
+            <h2>Erisa Nazari</h2>
+            <span>Interior Designer</span>
+          </div>
+          <p>Curates materials, light, and tactile experiences to shape interiors that feel natural and deeply human.</p>
+        </article>
+        <article class="member">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?auto=format&fit=facearea&w=320&h=320&q=80" alt="Portrait of Behnaz Farhadi" loading="lazy" /></div>
+          <div>
+            <h2>Behnaz Farhadi</h2>
+            <span>Visualization Lead</span>
+          </div>
+          <p>Develops immersive narratives and renderings that help clients feel each project long before it is built.</p>
+        </article>
+        <article class="member">
+          <div class="avatar"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=facearea&w=320&h=320&q=80" alt="Portrait of Lili Hosseini" loading="lazy" /></div>
+          <div>
+            <h2>Lili Hosseini</h2>
+            <span>Project Coordinator</span>
+          </div>
+          <p>Connects teams, consultants, and clients—keeping timelines precise and communication transparent.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="values" class="values" aria-labelledby="values-heading">
+      <div>
+        <h2 id="values-heading">Our values</h2>
+        <p>We believe architecture should amplify well-being. Each engagement begins with listening, continues with rigorous exploration, and ends with spaces that feel effortless for the people who inhabit them.</p>
+      </div>
+      <div class="values" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px">
+        <article>
+          <h3 style="margin:0 0 8px;font-size:20px">Precision</h3>
+          <p>We obsess over detail—every line and joint is considered to create cohesive, enduring environments.</p>
+        </article>
+        <article>
+          <h3 style="margin:0 0 8px;font-size:20px">Humanity</h3>
+          <p>Spaces must respond to the emotions of those who occupy them, balancing functionality with warmth.</p>
+        </article>
+        <article>
+          <h3 style="margin:0 0 8px;font-size:20px">Sustainability</h3>
+          <p>Material choices and systems planning center on longevity, resource efficiency, and environmental care.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
