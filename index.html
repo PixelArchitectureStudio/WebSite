@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PIXEL — Architecture Group · Home</title>
+  <meta name="description" content="PIXEL Architecture — Home, Projects, Contact" />
+  <style>
+    :root{
+      --bg:#111111;
+      --fg:#e8e8e8;
+      --muted:#aaaaaa;
+      --brand:#bfbfbf;
+      --card:#1a1a1a;
+      --g1x:20%; --g1y:30%;
+      --g2x:80%; --g2y:70%;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      height:100%;margin:0;overflow-y:auto;overflow-x:hidden;
+      background:
+        radial-gradient(1000px 600px at var(--g1x) var(--g1y), rgba(200,200,200,0.18) 0%, transparent 65%),
+        radial-gradient(700px 400px at var(--g2x) var(--g2y), rgba(150,150,150,0.15) 0%, transparent 70%),
+        var(--bg);
+      color:var(--fg);
+      font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      scroll-snap-type:y mandatory;
+      position:relative;
+      transition: background-position 0.6s ease;
+    }
+    a{color:inherit;text-decoration:none}
+
+    .chrome{position:fixed;left:16px;top:16px;z-index:10;display:flex;align-items:center;gap:16px}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo-badge{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#888,#bbb 60%);box-shadow:0 6px 24px rgba(255,255,255,.15), inset 0 1px 0 rgba(255,255,255,.2)}
+    .logo-title{font-weight:700;letter-spacing:.14em}
+
+    .nav{position:fixed;top:16px;right:16px;display:flex;gap:10px;z-index:10}
+    .nav a{padding:10px 14px;border-radius:999px;background:#1a1a1a;border:1px solid #2a2a2a;color:var(--muted);transition:.25s ease;backdrop-filter:blur(6px)}
+    .nav a.active,.nav a:hover{color:var(--fg);border-color:#444;box-shadow:0 6px 24px rgba(0,0,0,.35),0 0 0 1px #444 inset}
+
+    .h-wrapper{position:relative;width:100%;z-index:2}
+    .step{height:100vh;scroll-snap-align:start;scroll-snap-stop:always}
+    .h-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+    .track{position:absolute;inset:0;display:flex;gap:0;padding:0;transition:transform .6s cubic-bezier(.22,.61,.36,1);will-change:transform;}
+
+    .panel{min-width:100vw;height:100%;display:grid;place-items:center}
+    .panel-inner{width:min(100%,1100px)}
+    h1,h2{margin:0;line-height:1.1}
+    .hero h1{font-size:clamp(40px,8vw,92px)}
+    .hero p{max-width:60ch;color:var(--muted);margin-top:18px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid #333;background:#1a1a1a;color:#ccc}
+
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:28px}
+    .card{grid-column:span 4;min-height:240px;border-radius:18px;border:1px solid #333;background:linear-gradient(180deg,#1f1f1f,#151515);box-shadow:0 12px 30px rgba(0,0,0,.35);padding:16px;display:flex;flex-direction:column;justify-content:space-between}
+    .card h3{font-size:18px;margin:6px 0 0;color:#e0e0e0}
+    .card p{color:var(--muted);font-size:14px;margin:4px 0 0}
+    .thumb{height:150px;border-radius:14px;background:linear-gradient(135deg,#2a2a2a,#1a1a1a);border:1px dashed #444;display:grid;place-items:center;color:#999}
+
+    .form{display:grid;gap:12px;margin-top:18px;max-width:560px}
+    .input,.textarea{width:100%;background:#181818;border:1px solid #2f2f2f;border-radius:14px;padding:12px 14px;color:var(--fg)}
+    .input::placeholder,.textarea::placeholder{color:#8f8f8f}
+    .textarea{min-height:120px;resize:vertical}
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid #333;background:linear-gradient(180deg,#2a2a2a,#1c1c1c);color:#f0f0f0;cursor:pointer;font-weight:600}
+    .btn:hover{transform:translateY(-1px)}
+
+    canvas.particles{position:fixed;inset:0;z-index:1;pointer-events:none;}
+  </style>
+</head>
+<body>
+  <canvas class="particles" id="particles"></canvas>
+
+  <div class="chrome" aria-hidden="true">
+    <div class="logo"><div class="logo-badge"></div><div class="logo-title">PIXEL</div></div>
+    <span style="color:var(--muted)">Architecture Group</span>
+  </div>
+
+  <nav class="nav" id="nav">
+    <a href="#s0" data-index="0">Home</a>
+    <a href="#s1" data-index="1">Projects</a>
+    <a href="#s2" data-index="2">Contact</a>
+    <a href="about.html" rel="next">About</a>
+  </nav>
+
+  <div class="h-wrapper" id="hw">
+    <div class="h-sticky">
+      <div class="track" id="track">
+        <section class="panel" aria-labelledby="home-heading">
+          <div class="panel-inner hero">
+            <span class="pill">PIXEL — Architecture Group</span>
+            <h1 id="home-heading" style="margin-top:16px">Architecture for Clarity.<br>Minimal. Precise. <span style="color:var(--brand)">Human‑Centric</span>.</h1>
+            <p>PIXEL crafts minimal, sustainable spaces with meticulous detailing. Explore our recent work and get in touch to collaborate.</p>
+          </div>
+        </section>
+        <section class="panel" aria-labelledby="projects-heading">
+          <div class="panel-inner">
+            <h2 id="projects-heading">Projects</h2>
+            <div class="grid">
+              <article class="card"><div class="thumb">Cover — 01</div><div><h3>Shandiz Villa</h3><p>Residential · Mashhad · 2025</p></div></article>
+              <article class="card"><div class="thumb">Cover — 02</div><div><h3>Innovation Factory</h3><p>Mixed‑Use · Region 9 · 2025</p></div></article>
+              <article class="card"><div class="thumb">Cover — 03</div><div><h3>Contemporary Iranian House</h3><p>Research · Tehran · 2024</p></div></article>
+            </div>
+          </div>
+        </section>
+        <section class="panel" aria-labelledby="contact-heading">
+          <div class="panel-inner">
+            <h2 id="contact-heading">Contact</h2>
+            <p style="color:var(--muted);max-width:60ch">For collaborations, technical inquiries, or portfolios, send a message using the form below or email us.</p>
+            <form class="form" onsubmit="sendMail(event)">
+              <input class="input" id="name" placeholder="Name" autocomplete="name" required />
+              <input class="input" id="email" type="email" placeholder="Email" autocomplete="email" required />
+              <textarea class="textarea" id="msg" placeholder="Your message…" required></textarea>
+              <div style="display:flex;gap:10px;align-items:center"><button class="btn" type="submit">Send</button><a class="btn" href="mailto:hello@pixel.example?subject=Hello%20PIXEL" title="Send via your mail app">Email Direct</a></div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div id="s0" class="step"></div>
+    <div id="s1" class="step"></div>
+    <div id="s2" class="step"></div>
+  </div>
+
+  <div class="cue" aria-hidden="true">Scroll down ↓ — panels move left →</div>
+
+  <script>
+    // ===== Floating pixels background (uniform distribution) =====
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let pixels = [];
+    let W = innerWidth, H = innerHeight, DPR = Math.max(1, devicePixelRatio || 1);
+
+    function setupCanvas(){
+      W = innerWidth; H = innerHeight; DPR = Math.max(1, devicePixelRatio || 1);
+      canvas.width = Math.floor(W * DPR);
+      canvas.height = Math.floor(H * DPR);
+      // draw in CSS pixels
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    }
+
+    function seedParticles(count = 60){
+      pixels = [];
+      // Stratified sampling into a grid so particles are evenly spread
+      const cols = Math.ceil(Math.sqrt(count * (W / H)));
+      const rows = Math.ceil(count / cols);
+      const cellW = W / cols;
+      const cellH = H / rows;
+      let placed = 0;
+      for(let r=0; r<rows; r++){
+        for(let c=0; c<cols; c++){
+          if(placed >= count) break;
+          const jitterX = (Math.random()*0.8 + 0.1) * cellW; // keep away from borders slightly
+          const jitterY = (Math.random()*0.8 + 0.1) * cellH;
+          pixels.push({
+            x: c*cellW + jitterX,
+            y: r*cellH + jitterY,
+            dx: (Math.random() - 0.5) * 0.25,
+            dy: (Math.random() - 0.5) * 0.25,
+            size: Math.random()*2 + 1,
+            alpha: Math.random()*0.5 + 0.3
+          });
+          placed++;
+        }
+      }
+    }
+
+    function onResize(){
+      setupCanvas();
+      seedParticles(pixels.length || 60);
+    }
+    window.addEventListener('resize', onResize, {passive:true});
+    onResize();
+
+    function animatePixels(){
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#777';
+      for(const p of pixels){
+        ctx.globalAlpha = p.alpha;
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+        p.x += p.dx; p.y += p.dy;
+        // wrap in CSS pixel space
+        if(p.x < 0) p.x = W; else if(p.x > W) p.x = 0;
+        if(p.y < 0) p.y = H; else if(p.y > H) p.y = 0;
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(animatePixels);
+    }
+    animatePixels();
+
+    // ===== Gradient animation between panels =====
+    const gradTargets=[{g1x:20,g1y:30,g2x:80,g2y:70},{g1x:60,g1y:25,g2x:25,g2y:75},{g1x:40,g1y:70,g2x:70,g2y:30}];
+    let gradNow={...gradTargets[0]};
+    let gradAnim=null;
+    function setGrad(pos){
+      document.body.style.setProperty('--g1x',pos.g1x+'%');
+      document.body.style.setProperty('--g1y',pos.g1y+'%');
+      document.body.style.setProperty('--g2x',pos.g2x+'%');
+      document.body.style.setProperty('--g2y',pos.g2y+'%');
+    }
+    function animateGradientTo(index,duration=800){
+      const target=gradTargets[index];
+      const start={...gradNow};
+      const t0=performance.now();
+      if(gradAnim)cancelAnimationFrame(gradAnim);
+      function step(t){
+        const p=Math.min(1,(t-t0)/duration);
+        const ease=p<.5?2*p*p:-1+(4-2*p)*p;
+        const cur={
+          g1x:start.g1x+(target.g1x-start.g1x)*ease,
+          g1y:start.g1y+(target.g1y-start.g1y)*ease,
+          g2x:start.g2x+(target.g2x-start.g2x)*ease,
+          g2y:start.g2y+(target.g2y-start.g2y)*ease
+        };
+        setGrad(cur);
+        if(p<1)gradAnim=requestAnimationFrame(step);else gradNow=target;
+      }
+      gradAnim=requestAnimationFrame(step);
+    }
+
+    // ===== Horizontal panels driven by vertical scroll =====
+    const track=document.getElementById('track');
+    const steps=[...document.querySelectorAll('.step')];
+    const navLinks=[...document.querySelectorAll('.nav a')];
+    const scrollLinks=navLinks.filter(a=>a.hasAttribute('data-index'));
+
+    let currentIndex=0;
+    function translateToIndex(idx){
+      const x=-idx*window.innerWidth;
+      track.style.transform=`translate3d(${x}px,0,0)`;
+      scrollLinks.forEach(a=>a.classList.toggle('active',Number(a.dataset.index)===idx));
+      currentIndex=idx;
+      animateGradientTo(idx);
+    }
+
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting&&en.intersectionRatio>0.6){
+          const i=steps.indexOf(en.target);
+          if(i!==-1)translateToIndex(i);
+        }
+      });
+    },{threshold:[0.61]});
+    steps.forEach(s=>io.observe(s));
+
+    scrollLinks.forEach(a=>{
+      a.addEventListener('click',(e)=>{
+        e.preventDefault();
+        const i=Number(a.dataset.index);
+        document.getElementById('s'+i).scrollIntoView({behavior:'smooth'});
+      });
+    });
+
+    window.addEventListener('resize',()=>translateToIndex(currentIndex));
+    translateToIndex(0);
+  </script>
+</body>
+</html>
