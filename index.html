@@ -75,7 +75,8 @@
     .start-screen__inner{width:min(100%,960px);display:grid;gap:20px;justify-items:center;text-align:center;background:rgba(10,10,10,.75);
       border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:32px 28px;box-shadow:0 40px 120px rgba(0,0,0,.45);}
     .start-screen__inner h1{font-size:clamp(28px,4vw,48px);margin:0;color:#f5f5f5;letter-spacing:.08em;text-transform:uppercase;}
-    .start-screen__spline{width:100%;aspect-ratio:16/9;max-height:60vh;border-radius:18px;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 60px rgba(0,0,0,.55);background:#000;}
+    .start-screen__spline{width:100%;aspect-ratio:16/9;max-height:60vh;border-radius:18px;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 60px rgba(0,0,0,.55);background:#000;overflow:hidden;}
+    .start-screen__spline iframe{width:100%;height:100%;border:0;display:block;}
     .start-screen__caption{margin:0;color:var(--muted);max-width:60ch;}
     .start-screen__btn{padding:14px 36px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:linear-gradient(135deg,#f3f3f3,#c4c4c4);
       color:#111;font-weight:700;font-size:16px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;
@@ -93,13 +94,9 @@
   <div class="start-screen" id="start-screen" role="dialog" aria-modal="true" aria-labelledby="start-heading">
     <div class="start-screen__inner">
       <h1 id="start-heading">PIXEL — Immersive Preview</h1>
-      <iframe
-        src="https://my.spline.design/pixel01copy-e3wiguxio32kkv7melrqyjz2/"
-        title="PIXEL 3D Intro"
-        loading="lazy"
-        allowfullscreen
-        class="start-screen__spline"
-      ></iframe>
+      <div class="start-screen__spline">
+        <iframe src='https://my.spline.design/pixel01copy-e3wiguxio32kkv7melrqyjz2/' frameborder='0' width='100%' height='100%'></iframe>
+      </div>
       <p class="start-screen__caption">Experience our interactive 3D lobby, then enter the site.</p>
       <button type="button" class="start-screen__btn" id="start-button">Start</button>
     </div>
