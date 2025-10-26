@@ -65,10 +65,45 @@
     .btn:hover{transform:translateY(-1px)}
 
     canvas.particles{position:fixed;inset:0;z-index:1;pointer-events:none;}
+
+    body.start-locked{overflow:hidden;}
+    .start-screen{position:fixed;inset:0;z-index:30;background:radial-gradient(circle at center,rgba(25,25,25,.9),#050505 75%);
+      display:flex;align-items:center;justify-content:center;padding:24px;transition:opacity .6s ease,visibility .6s ease;
+      backdrop-filter:blur(12px);
+    }
+    .start-screen.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+    .start-screen__inner{width:min(100%,960px);display:grid;gap:20px;justify-items:center;text-align:center;background:rgba(10,10,10,.75);
+      border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:32px 28px;box-shadow:0 40px 120px rgba(0,0,0,.45);}
+    .start-screen__inner h1{font-size:clamp(28px,4vw,48px);margin:0;color:#f5f5f5;letter-spacing:.08em;text-transform:uppercase;}
+    .start-screen__spline{width:100%;aspect-ratio:16/9;max-height:60vh;border-radius:18px;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 60px rgba(0,0,0,.55);background:#000;}
+    .start-screen__caption{margin:0;color:var(--muted);max-width:60ch;}
+    .start-screen__btn{padding:14px 36px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:linear-gradient(135deg,#f3f3f3,#c4c4c4);
+      color:#111;font-weight:700;font-size:16px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;
+      box-shadow:0 18px 40px rgba(0,0,0,.4);}
+    .start-screen__btn:hover{transform:translateY(-2px);box-shadow:0 24px 60px rgba(0,0,0,.45);}
+    @media (max-width:640px){
+      .start-screen__inner{padding:24px 18px;gap:16px;}
+      .start-screen__spline{max-height:50vh;}
+    }
   </style>
 </head>
-<body>
+<body class="start-locked">
   <canvas class="particles" id="particles"></canvas>
+
+  <div class="start-screen" id="start-screen" role="dialog" aria-modal="true" aria-labelledby="start-heading">
+    <div class="start-screen__inner">
+      <h1 id="start-heading">PIXEL — Immersive Preview</h1>
+      <iframe
+        src="https://my.spline.design/pixel01copy-e3wiguxio32kkv7melrqyjz2/"
+        title="PIXEL 3D Intro"
+        loading="lazy"
+        allowfullscreen
+        class="start-screen__spline"
+      ></iframe>
+      <p class="start-screen__caption">Experience our interactive 3D lobby, then enter the site.</p>
+      <button type="button" class="start-screen__btn" id="start-button">Start</button>
+    </div>
+  </div>
 
   <div class="chrome" aria-hidden="true">
     <div class="logo"><div class="logo-badge"></div><div class="logo-title">PIXEL</div></div>
@@ -218,6 +253,21 @@
     }
 
     // ===== Horizontal panels driven by vertical scroll =====
+    const startScreen=document.getElementById('start-screen');
+    const startButton=document.getElementById('start-button');
+    if(startScreen && startButton){
+      requestAnimationFrame(()=>startButton.focus());
+      startButton.addEventListener('click',()=>{
+        startScreen.classList.add('hidden');
+        startScreen.setAttribute('aria-hidden','true');
+        document.body.classList.remove('start-locked');
+        window.scrollTo(0,0);
+        setTimeout(()=>startScreen.remove(),700);
+      },{once:true});
+    }else{
+      document.body.classList.remove('start-locked');
+    }
+
     const track=document.getElementById('track');
     const steps=[...document.querySelectorAll('.step')];
     const navLinks=[...document.querySelectorAll('.nav a')];
