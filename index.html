@@ -78,6 +78,7 @@
       background:linear-gradient(135deg,#f8f8f8,#cfcfcf);color:#111;font-weight:700;font-size:16px;letter-spacing:.12em;
       text-transform:uppercase;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 20px 48px rgba(0,0,0,.5);}
     .start-screen__btn:hover{transform:translateY(-2px);box-shadow:0 28px 72px rgba(0,0,0,.55);}
+    .start-screen__cover{position:absolute;right:0;bottom:0;width:140px;height:60px;background:#252525;z-index:2;pointer-events:none;}
     @media (max-width:640px){
       .start-screen{padding:32px 18px;}
       .start-screen__btn{width:100%;max-width:280px;}
@@ -92,6 +93,7 @@
       <iframe src='https://my.spline.design/pixel01copy-e3WIGuxIO32kkv7melRqyjZ2/' frameborder='0' width='100%' height='100%'
         title="PIXEL interactive start preview" allow="autoplay; fullscreen" loading="lazy"></iframe>
     </div>
+    <div class="start-screen__cover" aria-hidden="true"></div>
     <button type="button" class="start-screen__btn" id="start-button">Start</button>
   </div>
 
